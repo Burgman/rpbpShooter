@@ -117,9 +117,11 @@ namespace rpbp.IsoShooter
 
         #region Private Methods
 
-        private void WeaponPickup(GameObject weapon) {
-
-            Debug.Log("Weapon picked up");
+        /// <summary>
+        /// Set position for weapon when picking it up, then set weapon stats
+        /// </summary>
+        /// <param name="weapon"></param>
+        private void WeaponPickup(GameObject weapon) { 
             Transform playerTransform = this.gameObject.transform;
             Transform playerHandTransform = playerTransform.GetChild(0).transform;
             Vector3 playerDirection = playerHandTransform.position - playerTransform.position;
@@ -128,12 +130,13 @@ namespace rpbp.IsoShooter
             weapon.transform.position = playerHandTransform.position;
             weapon.transform.rotation = Quaternion.LookRotation(playerDirection);
 
-            this.SetWeapon(weapon.GetComponent<WeaponStats>());
+            var script = weapon.GetComponent<Rifle>();
+            var stats = script.GetWeaponStats();
+            this.SetWeaponStats(stats);
         }
 
-        public void SetWeapon(WeaponStats m)
+        public void SetWeaponStats(WeaponStats m)
         {
-
             this.SetFireRate(m.getWeaponStatFireRate());
             this.SetMaxAmmo(m.getWeaponStatMaxAmmo());
             this.SetReloadTime(m.getWeaponReloadTime());

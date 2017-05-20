@@ -20,12 +20,12 @@ namespace rpbp.IsoShooter {
         void Start()
         {
             //Initiate stats for handgun
-            this.mStat = new WeaponStats();
-
-            mStat.setWeaponStatFireRate(this.mFireRate);
-            mStat.setWeaponStatMaxAmmo(this.mMaxAmmo);
-            mStat.setWeaponStatReloadTime(this.mReloadTime);
-            mStat.setWeaponStatName(gameObject.name);
+            var stats = new WeaponStats();
+            stats.setWeaponStatFireRate(this.mFireRate);
+            stats.setWeaponStatMaxAmmo(this.mMaxAmmo);
+            stats.setWeaponStatReloadTime(this.mReloadTime);
+            stats.setWeaponStatName(gameObject.name);
+            this.SetWeaponStats(stats);
 
         }
 

@@ -86,7 +86,7 @@ namespace rpbp.IsoShooter.BaseClasses {
 
                 GameObject projectile = Instantiate(mProjectile,  projectileEmitter.position, Quaternion.LookRotation(dir));
 
-                Debug.Log(projectileEmitter.position);
+                Debug.Log(projectile.name);
 
                 var projectileRB = projectile.GetComponent<Rigidbody>();
                 var projectileScript = projectile.GetComponent<Projectile.ProjectileBullet>();
